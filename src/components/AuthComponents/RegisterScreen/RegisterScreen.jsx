@@ -1,28 +1,32 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import validator from 'validator';
+import { useDispatch, useSelector } from 'react-redux'
+import { startRegisterWithEmailPasswordName } from '../../../actions/auth';
 import { useForm } from '../../../hooks/useForm';
 
 export const RegisterScreen = () => {
 
+    const dispatch = useDispatch();
+
     const [values, handleInputChange, reset ] = useForm({
-        name: 'gustavo',
+        username: 'gusky',
         email: 'gustavo@mail.com',
-        password: '12345',
-        password2: '12345',
+        password: '123456',
+        password2: '123456',
     });
 
-    const { name, email, password, password2 } = values;
+    const { username, email, password, password2 } = values;
 
     const handleRegister = ( e ) => {
         e.preventDefault();
         if( isFormValid() ){
-            // Despachar función para registrar en google
+            dispatch( startRegisterWithEmailPasswordName( email, password, username ) );
         }
     }
 
     const isFormValid = () => {
-        if( name.trim().length === 0 ){
+        if( username.trim().length === 0 ){
             // Despachar error
             return false;
         }
@@ -33,6 +37,10 @@ export const RegisterScreen = () => {
             return false;
         }
         return true;
+    }
+
+    const handleChange = ( e ) => {
+        handleInputChange(e)
     }
 
     return (
@@ -53,7 +61,8 @@ export const RegisterScreen = () => {
                         name="username" 
                         id="username" 
                         placeholder=""
-                        value={ name } 
+                        value={ username }
+                        onChange={ (e) => {handleInputChange( e )} } 
                         autoComplete="off"/>
                 </div>
                 <div className="form-group">
@@ -64,6 +73,7 @@ export const RegisterScreen = () => {
                         id="email" 
                         placeholder=""  
                         value={ email }
+                        onChange={ handleChange }
                         autoComplete="off"/>
                 </div>
                 <div className="form-group">
@@ -74,16 +84,18 @@ export const RegisterScreen = () => {
                         id="password" 
                         placeholder=""  
                         value={ password }
+                        onChange={ handleChange }
                         autoComplete="off"/>
                 </div>
                 <div className="form-group">
                     <label htmlFor="pass">Confirme Contraseña</label>
                     <input 
-                        type="password2" 
+                        type="password" 
                         name="password2" 
                         id="password2" 
                         placeholder=""  
                         value={ password2 }
+                        onChange={ handleChange }
                         autoComplete="off"/>
                 </div>
                 <input 

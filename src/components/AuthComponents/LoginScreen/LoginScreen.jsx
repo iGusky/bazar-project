@@ -1,33 +1,46 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from "../../../hooks/useForm";
+import { useDispatch, useSelector } from "react-redux";
+import { startLoginWithEmailPassword } from '../../../actions/auth'
 
 export const LoginScreen = () => {
 
+    const dispatch = useDispatch();
+    // const { loading } = useSelector(state => state.ui);
+
     const [values, handleInputChange, reset ] = useForm({
-        name: 'gustavo',
-        password: '12345',
+        email: 'gustavo@mail.com',
+        password: '123456',
     });
 
-    const { name, password } = values;
+    const handleLogin = ( e ) => {
+        e.preventDefault();
+        dispatch( startLoginWithEmailPassword( email, password ) );
+    }
+
+    const { email, password } = values;
 
     return (
         <div className="auth__container">
-            <form 
+            <form
                 action="" 
                 method="POST" 
-                className="auth__form">
+                className="auth__form"
+                onSubmit={ handleLogin }
+                >
 
                 <legend>Ingresa tu información</legend>
 
                 <div className="form-group">
-                    <label htmlFor="">Usuario</label>
+                    <label htmlFor="email">Correo Electrónico</label>
                     <input 
-                        type="text" 
-                        name="username" 
-                        id="username" 
+                        type="email" 
+                        name="email" 
+                        id="email" 
                         placeholder=""
-                        value={ name } 
+                        value={ email }
+                        onChange={ (e) => { handleInputChange( e ) }} 
                         autoComplete="off"/>
                 </div>
                 <div className="form-group">
@@ -37,7 +50,8 @@ export const LoginScreen = () => {
                         name="password" 
                         id="password" 
                         placeholder=""
-                        value={ password } 
+                        value={ password }
+                        onChange={ (e) => { handleInputChange( e ) }} 
                         autoComplete="off"/>
                 </div>
                 <input 
