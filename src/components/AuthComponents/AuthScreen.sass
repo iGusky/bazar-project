@@ -1,0 +1,50 @@
+
+.auth__container
+    width: 100vw
+    height: 100vh
+    display: flex
+    justify-content: center
+    align-items: center
+    background: linear-gradient(.45turn, #c96b54, #ad5151 , #a85732)
+
+.auth__form
+    background: #ffffff
+    padding: 50px
+    border-radius: 5px
+    legend
+        text-align: center
+        font-size: 1.2rem
+        padding: 10px
+        color: $grey-color
+        font-weight: bold
+    p
+        text-align: center
+        color: $grey-color
+        font-size: 0.9rem
+
+.form-group
+    display: flex
+    flex-direction: column
+    margin: 25px 0px
+    
+    label
+        color: $grey-color
+        font-size: .7rem
+        font-weight: bold
+    input
+        font-size: 1.3rem
+        margin-top: 10px
+        border: 0px
+        border-bottom: 2px solid $primary-color
+        color: #743434
+        &:focus
+            outline: none
+            border-bottom: 3px solid $primary-color
+
+.auth__social-network
+    align-items: center
+    display: flex
+    justify-content: center
+    flex-direction: column
+    padding: 20px 0
+    width: 50%
