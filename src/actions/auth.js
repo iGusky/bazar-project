@@ -18,6 +18,18 @@ export const startLoginWithEmailPassword = ( email, password ) => {
     }
 }
 
+export const startGoogleLogin = () => {
+    return ( dispath ) => {
+        firebase.auth().signInWithPopup( googleAuthProvider )
+            .then( ({ user }) => {
+                dispath (
+                    login( user.uid, user.displayName )
+                )
+            })
+    }
+}
+
+
 export const login = ( uid, displayName ) => {
     return {
         type: types.login,
@@ -42,3 +54,15 @@ export const startRegisterWithEmailPasswordName = ( email, password, name ) => {
             } )
     }
 }
+
+export const startLogout = () => {
+    return async ( dispath ) => {
+        await firebase.auth().signOut();
+
+        dispath( logout() );
+    }
+}
+
+export const logout = () => ({
+    type: types.logout
+})

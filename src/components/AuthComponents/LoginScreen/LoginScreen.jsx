@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from "../../../hooks/useForm";
 import { useDispatch, useSelector } from "react-redux";
-import { startLoginWithEmailPassword } from '../../../actions/auth'
+import { startGoogleLogin, startLoginWithEmailPassword } from '../../../actions/auth'
 
 export const LoginScreen = () => {
 
@@ -17,6 +17,10 @@ export const LoginScreen = () => {
     const handleLogin = ( e ) => {
         e.preventDefault();
         dispatch( startLoginWithEmailPassword( email, password ) );
+    }
+
+    const handleGoogleLogin = () => {
+        dispatch( startGoogleLogin() );
     }
 
     const { email, password } = values;
@@ -58,12 +62,15 @@ export const LoginScreen = () => {
                     type="submit" 
                     className="btn btn-block btn-primary" 
                     value="Iniciar sesión"/>
-                <p>¿No tienes cuenta? <Link to="/auth/register">Registrate</Link></p>
 
                 <div className="auth__social-networks">
                     <legend>Otras formas de ingresar</legend>
                 </div>
-                <div className="google-btn">   
+
+                <div 
+                    className="google-btn"
+                    onClick={ handleGoogleLogin }
+                >   
                     <div className="google-icon-wrapper">
                         <img className="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="google button" />
                     </div>
@@ -71,6 +78,8 @@ export const LoginScreen = () => {
                         <b>Ingresa con Google</b>
                     </p>
                 </div>
+                
+                <p>¿No tienes cuenta? <Link to="/auth/register">Registrate</Link></p>
             </form>
         </div>
     )
