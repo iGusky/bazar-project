@@ -29,6 +29,12 @@ export const AppRouter = () => {
         })
     }, [ dispatch, setChecking, setIsLoggedIn ]);
 
+    if( checking ){
+        return(
+            <div className="lds-ring main container"><div></div><div></div><div></div><div></div></div>
+        )
+    }
+
     return (
         <Router>
             <Switch>

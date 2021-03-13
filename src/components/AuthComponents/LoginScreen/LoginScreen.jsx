@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from "../../../hooks/useForm";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { startGoogleLogin, startLoginWithEmailPassword } from '../../../actions/auth'
 
 export const LoginScreen = () => {
@@ -9,7 +9,7 @@ export const LoginScreen = () => {
     const dispatch = useDispatch();
     // const { loading } = useSelector(state => state.ui);
 
-    const [values, handleInputChange, reset ] = useForm({
+    const [values, handleInputChange ] = useForm({
         email: 'gustavo@mail.com',
         password: '123456',
     });
@@ -34,7 +34,7 @@ export const LoginScreen = () => {
                 onSubmit={ handleLogin }
                 >
 
-                <legend>Ingresa tu información</legend>
+                <legend>Inicia Sesión</legend>
 
                 <div className="form-group">
                     <label htmlFor="email">Correo Electrónico</label>
