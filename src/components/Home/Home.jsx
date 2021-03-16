@@ -1,17 +1,11 @@
 import React from 'react'
 import {useSelector } from "react-redux";
-// import { startLogout } from "../../actions/auth";
 import { Navbar } from '../Navbar/Navbar';
 import { Productos } from '../Productos/Productos';
 
 export const Home = () => {
 
-    // const dispatch = useDispatch();
     const { name } = useSelector( state => state.auth );
-
-    // const handleLogOut = () => {
-    //     dispatch( startLogout() )
-    // }
 
     return (
         <div>
@@ -24,8 +18,8 @@ export const Home = () => {
                     <button type="submit" className="btn search-icon"><i class="fas fa-search"></i></button>
                 </form>  
            </div>
-           <div className="container">
-               <Productos />
+           <div className="container-products">
+                <Productos />
            </div>
         </div>
     )
