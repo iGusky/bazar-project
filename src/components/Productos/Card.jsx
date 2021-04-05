@@ -1,13 +1,13 @@
-import React from 'react'
-import producto from '../../assets/productos/1.jpg'
+import React from "react";
 
-export const Card = () => {
-    return (
-        <div className = "card">
-            <img src={ producto } alt="Playera Vue" className="mb-2"/>
-            <p className = "product-name mb-2 mt-2">Playera VUE</p>
-            <p className = "product-seller mb-2">DEV.shop</p>
-            <p className = "product-price mb-2">$250</p>
-        </div>
-    )
-}
+export const Card = ({producto}) => {
+  const { image, product, seller, price } = producto;
+  return (
+    <div className="card">
+      <img src={image} alt={product} className="mb-2" />
+      <p className="product-name mb-2 mt-2">{product}</p>
+      <p className="product-seller mb-2">{seller.name}</p>
+      <p className="product-price mb-2">$ {price}</p>
+    </div>
+  );
+};

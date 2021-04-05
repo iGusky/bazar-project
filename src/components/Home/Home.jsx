@@ -1,6 +1,5 @@
 import React from 'react'
 import {useSelector } from "react-redux";
-import { Navbar } from '../Navbar/Navbar';
 import { Productos } from '../Productos/Productos';
 
 export const Home = () => {
@@ -9,7 +8,6 @@ export const Home = () => {
 
     return (
         <div>
-           <Navbar />
            <div className = "hero">
                <h1>Bienvenido { name }</h1>
                <p>Busca entre articulos, tiendas, categorías...</p>
