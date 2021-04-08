@@ -1,33 +1,43 @@
 .products-grid
-    display: grid
-    grid-template-columns: repeat(4, 1fr)
-    column-gap: 40px
-    grid-row-gap: 40px
+  display: grid
+  grid-template-columns: repeat(4, 1fr)
+  column-gap: 40px
+  grid-row-gap: 40px
 
-    @media ( max-width: 1366px )
-        grid-template-columns: repeat(3, 1fr)
+  @media ( max-width: 1366px )
+    grid-template-columns: repeat(3, 1fr)
 
     @media ( max-width: 768px )
-        grid-template-columns: repeat(2, 1fr)
-        column-gap: 30px
+      grid-template-columns: repeat(2, 1fr)
+      column-gap: 30px
 
     @media ( max-width: 425px )
-        grid-template-columns: repeat(1, 1fr)
-        column-gap: 0px
+      grid-template-columns: repeat(1, 1fr)
+      column-gap: 0px
 .card
-    width: 240px
-    padding: 15px
-    background: $bg-card
-    text-align: center
-    border-radius: 10px
-    img
-        width: 100%
-        margin: 0 auto
-        border-radius: 10px
+  width: 240px
+  padding: 15px
+  background: $bg-card
+  text-align: center
+  border-radius: 10px
+  img
+    display: block
+    max-width: 240px
+    max-height: 240px
+    width: auto
+    height: auto
+    margin: 0 auto
+.image-div
+  width: 240px
+  height: 240px
+  display: flex
+  align-items: center
+  background: #fff
 
 .product-name
-    font-weight: bold
+  font-weight: bold
+  font-size: 1.1rem
 
 .product-price
-    font-weight: bold
-    color: #be3495
+  font-weight: bold
+  color: #be3495
