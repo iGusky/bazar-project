@@ -15,9 +15,7 @@ export const loadLastProducts = async () => {
     return productos;
 };
 
-export const loadProduct = ( idProducto ) => {
-  const producto = db.collection( 'productos' ).doc(idProducto).get();
-  producto.then( prod => {
-    console.log( prod.data() );
-  })
+export const loadItem = async ( idProducto ) => {
+  const producto = await db.collection( 'productos' ).doc(idProducto).get();
+  return producto.data();
 }

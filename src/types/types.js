@@ -3,5 +3,6 @@ export const types = {
     logout: '[Auth] Logout',
 
     productosLoadLast10: '[Productos] LoadLast10',
+    productosLoadItem: '[Productos] LoadItem'
 
 }

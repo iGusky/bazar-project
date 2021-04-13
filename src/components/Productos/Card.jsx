@@ -13,7 +13,7 @@ export const Card = ({producto}) => {
           <p className="product-name mb-2 mt-2">{product}</p>
         </Link>
         <p className="product-seller mb-2">{seller.name}</p>
-        <p className="product-price mb-2">$ {price}</p>
+        <p className="product-price mb-2">${price}</p>
       </div>
     </div>
   );

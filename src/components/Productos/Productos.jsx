@@ -8,16 +8,14 @@ export const Productos = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch( startLoadingLastProducts() );
-  }, [ ]);
+    dispatch(startLoadingLastProducts());
+  }, []);
 
   return (
     <div className="products-grid">
-      {
-        productos.map( producto => {
-          return <Card key={producto.id} producto={producto} />;
-        })
-      }
+      {productos.map((producto) => {
+        return <Card key={producto.id} producto={producto} />;
+      })}
     </div>
   );
 };
