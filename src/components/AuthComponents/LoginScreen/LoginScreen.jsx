@@ -2,21 +2,21 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useForm } from "../../../hooks/useForm";
 import { useDispatch } from "react-redux";
-import { startGoogleLogin, startLoginWithEmailPassword } from '../../../actions/auth'
+import { startGoogleLogin, startLoginWithEmailPasswordMongo, startLoginWithEmailPassword } from '../../../actions/auth'
 
-export const LoginScreen = () => {
+export const LoginScreen = ({props}) => {
 
     const dispatch = useDispatch();
     // const { loading } = useSelector(state => state.ui);
 
     const [values, handleInputChange ] = useForm({
-        email: 'gustavo@mail.com',
+        email: 'gusky@correo.com',
         password: '123456',
     });
 
     const handleLogin = ( e ) => {
         e.preventDefault();
-        dispatch( startLoginWithEmailPassword( email, password ) );
+        dispatch( startLoginWithEmailPassword( email, password) );
     }
 
     const handleGoogleLogin = () => {

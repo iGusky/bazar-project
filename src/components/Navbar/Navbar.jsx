@@ -17,6 +17,7 @@ export const Navbar = () => {
                 <ul>
                     <li><Link to = "/inicio" className = "link navlink">Inicio</Link></li>
                     <li><Link to = "/agregar" className = "link navlink">Agregar</Link></li>
+                    <li><Link to = "/pedidos" className = "link navlink">Pedidos</Link></li>
                     <li><Link to = "/" className = "link navlink" onClick={ handleLogout }>Cerrar Sesión</Link></li>
                 </ul>
             </nav>

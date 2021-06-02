@@ -1,8 +1,9 @@
 import { firebase, googleAuthProvider } from "../firebase/firebaseConfig";
 import { types } from "../types/types";
+import { clienteAxios } from '../config/axios'
 import Swal from "sweetalert2";
 
-export const startLoginWithEmailPassword = (email, password) => {
+export const startLoginWithEmailPassword= (email, password) => {
   return (dispath) => {
     // dispath( startLoading() );
     firebase
@@ -17,6 +18,46 @@ export const startLoginWithEmailPassword = (email, password) => {
       });
   };
 };
+
+export const startLoginWithEmailPasswordMongo = (email, password) => {
+  return async (dispatch) => {
+        const usuario = {
+          email,
+          password
+        }
+        // AUtenticar ususario
+        try {
+
+
+          const respuesta = await clienteAxios.post('/iniciar-sesion', usuario);
+          const { token, user } = respuesta.data;
+          console.log(respuesta);
+          dispatch(login(user.uid, user.displayName));
+          localStorage.setItem('token', token);
+         
+          Swal.fire(
+            'Login correcto',
+            'Has iniciado sesión',
+            'success'
+          )
+        } catch (error) {
+          if( error.response ){
+            Swal.fire({
+              icon: 'error',
+              title: 'Hubo un error 1',
+              text : error.response.data.mensaje
+            })
+          } else {
+            Swal.fire({
+              icon: 'error',
+              title: 'Hubo un error 2',
+              text : error
+            })
+          }
+          
+        }
+  }
+}
 
 export const startGoogleLogin = () => {
   return (dispath) => {
